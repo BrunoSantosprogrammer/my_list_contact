@@ -1,7 +1,27 @@
+import Task from '../../components/Task'
+import { FormContainer } from './styles'
+
 const ToDoList = () => (
-  <form>
-    <h1>My List Contact</h1>
-  </form>
+  <FormContainer>
+    <h1>Lista de Contatos</h1>
+    <ul>
+      <li>
+        <Task />
+      </li>
+      <li>
+        <Task />
+      </li>
+      <li>
+        <Task />
+      </li>
+      <li>
+        <Task />
+      </li>
+      <li>
+        <Task />
+      </li>
+    </ul>
+  </FormContainer>
 )
 
 export default ToDoList
