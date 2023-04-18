@@ -1,8 +1,16 @@
+import Form from './containers/Form'
+import SideBar from './containers/SideBar'
+import GlobalStyle, { Container } from './styles'
+
 function App() {
   return (
-    <div className="App">
-      <h1>Olá</h1>
-    </div>
+    <>
+      <GlobalStyle />
+      <Container>
+        <SideBar />
+        <Form />
+      </Container>
+    </>
   )
 }
 
