@@ -1,19 +1,57 @@
+import { useDispatch, useSelector } from 'react-redux'
 import CardFilter from '../../components/CardFilter'
 import * as S from './styles'
+import { RootReducer } from '../../store'
+import { changeTerm } from '../../store/reducers/filter'
+import * as enums from '../../utils/enums/Task'
 
-const SideBar = () => (
-  <S.Aside>
-    <div>
-      <S.Search type="text" placeholder="Buscar" />
-      <S.Filter>
-        <CardFilter legend="familia" counter={1} />
-        <CardFilter legend="amigos" counter={2} />
-        <CardFilter legend="trabalho" counter={3} />
-        <CardFilter legend="importante" counter={4} />
-        <CardFilter legend="prioridade" counter={5} />
-        <CardFilter legend="todas" counter={15} active />
-      </S.Filter>
-    </div>
-  </S.Aside>
-)
+const SideBar = () => {
+  const dispatch = useDispatch()
+  const { term } = useSelector((state: RootReducer) => state.filter)
+
+  return (
+    <S.Aside>
+      <div>
+        <S.Search
+          type="text"
+          placeholder="Buscar"
+          value={term}
+          onChange={(evento) => dispatch(changeTerm(evento.target.value))}
+        />
+        <S.Filter>
+          <CardFilter
+            valor={enums.Status.FAMILY}
+            criterion="status"
+            legend="familia"
+          />
+          <CardFilter
+            valor={enums.Status.FRIENDS}
+            criterion="status"
+            legend="amigos"
+          />
+          <CardFilter
+            valor={enums.Status.WORK}
+            criterion="status"
+            legend="trabalho"
+          />
+          <CardFilter
+            valor={enums.Priority.IMPORTANT}
+            criterion="prioridade"
+            legend="importante"
+          />
+          <CardFilter
+            valor={enums.Priority.PRIORITY}
+            criterion="prioridade"
+            legend="prioridade"
+          />
+          <CardFilter
+            criterion="todas"
+            legend="todas"
+            valor={enums.Priority.NORMAL}
+          />
+        </S.Filter>
+      </div>
+    </S.Aside>
+  )
+}
 export default SideBar

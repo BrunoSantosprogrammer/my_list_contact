@@ -6,4 +6,5 @@ export default {
   orangeColor: ' #ff8c00',
   PinkColor: '#FF1493',
   BrownColor: '#8B4513',
+  lavanderColor: '#e6e6fa',
 }
